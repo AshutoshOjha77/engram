@@ -38,9 +38,7 @@ class ImproveRequest(BaseModel):
 @app.post("/remember")
 async def api_remember(req: RememberRequest) -> dict:
     try:
-        await engram.remember(
-            text=req.text, dataset=req.dataset, strength=req.strength
-        )
+        await engram.remember(text=req.text, dataset=req.dataset, strength=req.strength)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     return {"status": "ok", "dataset": req.dataset}
@@ -66,9 +64,7 @@ async def api_forget(req: ForgetRequest) -> dict:
 
 @app.post("/prune")
 async def api_prune(req: PruneRequest) -> dict:
-    pruned_count = await engram.prune(
-        dataset=req.dataset, threshold=req.threshold
-    )
+    pruned_count = await engram.prune(dataset=req.dataset, threshold=req.threshold)
     return {"status": "ok", "dataset": req.dataset, "pruned": pruned_count}
 
 
