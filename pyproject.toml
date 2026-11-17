@@ -12,16 +12,21 @@ requires-python = ">=3.10"
 dependencies = [
     "chromadb>=0.4.15",
     "networkx>=3.0",
+    "fastapi>=0.100",
+    "uvicorn>=0.23",
 ]
 
 [project.optional-dependencies]
 nlp = ["spacy>=3.7"]
 dev = [
+    "fastapi>=0.100",
+    "httpx>=0.24",
     "pytest>=7.4",
     "pytest-asyncio>=0.21",
     "ruff>=0.1",
     "spacy>=3.7",
     "towncrier>=23.0",
+    "uvicorn>=0.23",
 ]
 
 [tool.towncrier]
